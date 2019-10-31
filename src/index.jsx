@@ -1,14 +1,9 @@
-import React, {Fragment} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-
-const name = `unknown raccoon`;
-const element = <Fragment> Hello, {name} </Fragment>;
+import App from "./components/app/app.jsx";
 
 const init = () => {
-  ReactDOM.render(
-      element,
-      document.querySelector(`#root`)
-  );
+  ReactDOM.render(<App/>, document.querySelector(`#root`));
 };
 
 init();

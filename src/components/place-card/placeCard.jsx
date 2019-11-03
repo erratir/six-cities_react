@@ -1,9 +1,8 @@
 import React, {Fragment} from "react";
-// import PropTypes from "react/prop-types";
+import PropTypes from "prop-types";
 
 const PlaceCard = (props) => {
 
-  // eslint-disable-next-line react/prop-types
   const {title, price, type, preview_image: previewImage} = props.offer;
 
   return <Fragment>
@@ -42,6 +41,16 @@ const PlaceCard = (props) => {
       </div>
     </article>
   </Fragment>;
+};
+
+PlaceCard.propTypes = {
+  offer: PropTypes.exact({
+    title: PropTypes.string,
+    price: PropTypes.number,
+    type: PropTypes.string,
+    // eslint-disable-next-line camelcase
+    preview_image: PropTypes.string
+  })
 };
 
 export default PlaceCard;

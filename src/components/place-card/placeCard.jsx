@@ -49,7 +49,8 @@ PlaceCard.propTypes = {
     price: PropTypes.number,
     type: PropTypes.string,
     // eslint-disable-next-line camelcase
-    preview_image: PropTypes.string
+    preview_image: PropTypes.string,
+    id: PropTypes.number
   })
 };
 

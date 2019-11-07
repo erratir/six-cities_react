@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlaceCard from './placeCard.jsx';
+import PlaceCard from './place-card.jsx';
 
 const mockOffer = {
   "preview_image": `https://es31-server.appspot.com/six-cities/static/hotel/7.jpg`,

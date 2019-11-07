@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import PlaceCard from "../place-card/placeCard.jsx";
+import PlaceCard from "../place-card/place-card.jsx";
 
 const Main = (props) => {
   // eslint-disable-next-line react/prop-types

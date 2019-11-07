@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const PlaceCard = (props) => {
 
   const {title, price, type, previewImage} = props.offer;
+  const {handleClick = () => {}} = props;
 
   return <Fragment>
     <article className="cities__place-card place-card">
@@ -35,7 +36,7 @@ const PlaceCard = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#" onClick={handleClick}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -49,8 +50,9 @@ PlaceCard.propTypes = {
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     previewImage: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
-  })
+    id: PropTypes.number.isRequired,
+  }),
+  handleClick: PropTypes.func,
 };
 
 export default PlaceCard;

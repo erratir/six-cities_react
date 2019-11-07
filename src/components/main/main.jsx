@@ -1,8 +1,8 @@
 import React, {Fragment} from "react";
 import PlaceCard from "../place-card/place-card.jsx";
+import PropTypes from "prop-types";
 
 const Main = (props) => {
-  // eslint-disable-next-line react/prop-types
   const {offers} = props;
   return (
     <Fragment>
@@ -127,6 +127,10 @@ const Main = (props) => {
       </main>
     </Fragment>
   );
+};
+
+Main.propTypes = {
+  offers: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Main;

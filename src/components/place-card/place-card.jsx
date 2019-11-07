@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const PlaceCard = (props) => {
 
-  const {title, price, type, preview_image: previewImage} = props.offer;
+  const {title, price, type, previewImage} = props.offer;
 
   return <Fragment>
     <article className="cities__place-card place-card">
@@ -44,13 +44,12 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  offer: PropTypes.exact({
-    title: PropTypes.string,
-    price: PropTypes.number,
-    type: PropTypes.string,
-    // eslint-disable-next-line camelcase
-    preview_image: PropTypes.string,
-    id: PropTypes.number
+  offer: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
   })
 };
 

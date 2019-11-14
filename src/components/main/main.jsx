@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import PlaceCard from "../place-card/place-card.jsx";
+import PlacesList from "../places-list/places-list.jsx";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
@@ -112,10 +112,7 @@ const Main = (props) => {
               */}
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {
-                  // eslint-disable-next-line react/prop-types
-                  offers.map((offer)=> <PlaceCard key={offer.id} offer={offer}/>)
-                }
+                <PlacesList offers={offers}/>
               </div>
             </section>
             <div className="cities__right-section">

@@ -3,16 +3,20 @@ import PropTypes from "prop-types";
 
 const PlaceCard = (props) => {
 
-  const {title, price, type, previewImage} = props.offer;
-  const {handleClick = () => {}} = props;
+  const {title, isPremium, rating, price, type, previewImage} = props.offer;
+  const {handleImageClick = () => {}, handleTitleClick = () => {}} = props;
 
   return <Fragment>
     <article className="cities__place-card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+
+      {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
+
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="#" onClick={ (evt) => {
+          evt.preventDefault();
+          handleImageClick();
+        }
+        }>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
         </a>
       </div>
@@ -31,12 +35,12 @@ const PlaceCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: 93 + `%`}}/>
+            <span style={{width: rating * 2 * 10 + `%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={handleClick}>{title}</a>
+          <a href="#" onClick={handleTitleClick}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -47,12 +51,15 @@ const PlaceCard = (props) => {
 PlaceCard.propTypes = {
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    rating: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     previewImage: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }),
-  handleClick: PropTypes.func,
+  handleImageClick: PropTypes.func,
+  handleTitleClick: PropTypes.func,
 };
 
 export default PlaceCard;

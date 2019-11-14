@@ -276,12 +276,13 @@ Array [
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="https://es31-server.appspot.com/six-cities/static/hotel/7.jpg"
+                    src="https://loremflickr.com/260/200/hotel,house"
                     width="260"
                   />
                 </a>
@@ -336,7 +337,7 @@ Array [
                     <span
                       style={
                         Object {
-                          "width": "93%",
+                          "width": "78%",
                         }
                       }
                     />
@@ -354,7 +355,7 @@ Array [
                     href="#"
                     onClick={[Function]}
                   >
-                    Perfectly located Castro
+                    Bungalow in Paradise
                   </a>
                 </h2>
                 <p
@@ -368,23 +369,17 @@ Array [
               className="cities__place-card place-card"
             >
               <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
-              <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="https://es31-server.appspot.com/six-cities/static/hotel/6.jpg"
+                    src="https://loremflickr.com/260/200/hostel,room"
                     width="260"
                   />
                 </a>
@@ -439,7 +434,7 @@ Array [
                     <span
                       style={
                         Object {
-                          "width": "93%",
+                          "width": "60%",
                         }
                       }
                     />
@@ -457,7 +452,7 @@ Array [
                     href="#"
                     onClick={[Function]}
                   >
-                    Perfectly located Castro
+                    Dark rat hole
                   </a>
                 </h2>
                 <p

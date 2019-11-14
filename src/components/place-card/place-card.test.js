@@ -3,8 +3,10 @@ import renderer from 'react-test-renderer';
 import PlaceCard from './place-card.jsx';
 
 const mockOffer = {
-  "previewImage": `https://es31-server.appspot.com/six-cities/static/hotel/7.jpg`,
+  "previewImage": `https://loremflickr.com/260/200/hostel,room`,
   "title": `Бунгало в попе мира`,
+  "isPremium": true,
+  "rating": 3.9,
   "type": `room`,
   "price": 99999,
   "id": 9997,

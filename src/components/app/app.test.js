@@ -4,15 +4,19 @@ import App from './app.jsx';
 
 const mockOffers = [
   {
-    "previewImage": `https://es31-server.appspot.com/six-cities/static/hotel/7.jpg`,
-    "title": `Perfectly located Castro`,
+    "previewImage": `https://loremflickr.com/260/200/hotel,house`,
+    "title": `Bungalow in Paradise`,
+    "isPremium": true,
+    "rating": 3.9,
     "type": `room`,
     "price": 290,
     "id": 1,
   },
   {
-    "previewImage": `https://es31-server.appspot.com/six-cities/static/hotel/6.jpg`,
-    "title": `Perfectly located Castro`,
+    "previewImage": `https://loremflickr.com/260/200/hostel,room`,
+    "title": `Dark rat hole`,
+    "isPremium": false,
+    "rating": 3,
     "type": `house`,
     "price": 876,
     "id": 2,
@@ -22,7 +26,7 @@ const mockOffers = [
 
 it(`App correctly renders`, () => {
   const tree = renderer
-    .create(<App offers={mockOffers} onClick={jest.fn()}/>)
+    .create(<App offers={mockOffers}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -6,41 +6,71 @@ import PlaceCard from './place-card.jsx';
 Enzyme.configure({adapter: new Adapter()});
 
 const mockOffer = {
-  "previewImage": `https://es31-server.appspot.com/six-cities/static/hotel/7.jpg`,
+  "previewImage": `https://loremflickr.com/260/200/hostel,room`,
   "title": `Бунгало в попе мира`,
+  "isPremium": true,
+  "rating": 3.9,
   "type": `room`,
   "price": 99999,
   "id": 9997,
 };
 
 describe(`E2E-test: PlaceCard`, () => {
-  let clickHandler;
+  let imageClickHandler;
+  let titleClickHandler;
   let placeCard;
-  let header;
+  let title;
+  let image;
+  const event = {preventDefault: () => {}};
 
   beforeEach(() => {
-    clickHandler = jest.fn();
-    placeCard = shallow(<PlaceCard offer={mockOffer} handleClick={clickHandler}/>);
-    header = placeCard.find(`.place-card__name a`);
+    imageClickHandler = jest.fn();
+    titleClickHandler = jest.fn();
+    placeCard = shallow(<PlaceCard offer={mockOffer} handleImageClick={imageClickHandler} handleTitleClick={titleClickHandler}/>);
+    title = placeCard.find(`.place-card__name a`);
+    image = placeCard.find(`.cities__image-wrapper a`);
+  });
+
+
+  it(`should have image`, () => {
+    expect(image).toHaveLength(1);
+  });
+
+  describe(`before click on image`, () => {
+    it(`handler shouldn't be called`, () => {
+      expect(imageClickHandler).toBeCalledTimes(0);
+    });
+  });
+
+  describe(`click on image`, () => {
+    beforeEach(() => {
+      image.simulate(`click`, event);
+    });
+
+    it(`handler should be called once`, () => {
+      expect(imageClickHandler).toBeCalledTimes(1);
+    });
   });
 
   it(`should have title`, () => {
-    expect(header).toHaveLength(1);
+    expect(title).toHaveLength(1);
   });
 
   describe(`before click on title`, () => {
     it(`handler shouldn't be called`, () => {
-      expect(clickHandler).toBeCalledTimes(0);
+      expect(titleClickHandler).toBeCalledTimes(0);
     });
   });
 
   describe(`click on title`, () => {
     beforeEach(() => {
-      header.simulate(`click`);
+      title.simulate(`click`);
     });
 
     it(`handler should be called once`, () => {
-      expect(clickHandler).toBeCalledTimes(1);
+      expect(titleClickHandler).toBeCalledTimes(1);
     });
   });
+
+
 });

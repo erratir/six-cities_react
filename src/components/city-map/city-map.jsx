@@ -7,6 +7,10 @@ const SETTINGS = {
   marker: true,
   zoom: 12,
   zoomControl: false,
+  icon: Leaflet.icon({
+    iconUrl: `img/pin.svg`,
+    iconSize: [30, 30]
+  }),
 };
 
 const LEAFLET_OPTIONS = {
@@ -40,7 +44,8 @@ class CityMap extends React.PureComponent {
   }
 
   _createMap() {
-    const {center, marker, zoom, zoomControl} = SETTINGS;
+    const {center, marker, zoom, zoomControl, icon} = SETTINGS;
+    const {offers} = this.props;
 
     const map = Leaflet.map(this._mapRef.current, {
       center,
@@ -55,7 +60,19 @@ class CityMap extends React.PureComponent {
       updateWhenIdle: true,
       attribution: LEAFLET_OPTIONS.copyright,
     }).addTo(map);
+
+    offers.forEach((offer) => {
+      const {latitude, longitude} = offer.city.location;
+      return Leaflet
+        .marker([latitude, longitude], {icon})
+        .addTo(map);
+    });
   }
+
 }
+
+CityMap.propTypes = {
+  offers: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+};
 
 export default CityMap;

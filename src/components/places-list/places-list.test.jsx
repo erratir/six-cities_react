@@ -44,7 +44,7 @@ const mocks = [
 it(`PlacesList correctly renders`, () => {
   const tree = renderer
     .create(<PlacesList
-      offers={mocks}/>)
+      cityOffers={mocks}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

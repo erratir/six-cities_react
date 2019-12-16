@@ -2,9 +2,10 @@ import React, {Fragment} from "react";
 import PlacesList from "../places-list/places-list.jsx";
 import PropTypes from "prop-types";
 import CityMap from "../city-map/city-map.jsx";
+import CitiesList from "../cities-list/cities-list.jsx";
 
 const Main = (props) => {
-  const {offers} = props;
+  const {currentCityName, offers, cityOffers, onChangeCity} = props;
   return (
     <Fragment>
       <div style={{display: `none`}}>
@@ -48,40 +49,7 @@ const Main = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="cities tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
+          <CitiesList currentCityName={currentCityName} offers={offers} onChangeCity={onChangeCity}/>
         </div>
         <div className="cities__places-wrapper">
           <div className="cities__places-container container">
@@ -113,11 +81,11 @@ const Main = (props) => {
               */}
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlacesList offers={offers}/>
+                <PlacesList cityOffers={cityOffers}/>
               </div>
             </section>
             <div className="cities__right-section">
-              <CityMap offers={offers} />
+              <CityMap offers={cityOffers} />
             </div>
           </div>
         </div>
@@ -128,7 +96,10 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired
+  offers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cityOffers: PropTypes.array.isRequired,
+  currentCityName: PropTypes.string.isRequired,
+  onChangeCity: PropTypes.func.isRequired,
 };
 
 export default Main;
